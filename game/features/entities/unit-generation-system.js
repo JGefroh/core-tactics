@@ -19,8 +19,9 @@ import GuiAttachmentComponent from '@game/engine/gui/gui-attachables/gui-attachm
 import MinimapComponent from '../ui/ui-minimap/minimap-component';
 
 export default class UnitGenerationSystem extends System {
-    constructor() {
+    constructor(params = {}) {
         super()
+        this.noSpawn = params.noSpawn;
 
         this.units = {
             // "gunner": {
@@ -91,6 +92,7 @@ export default class UnitGenerationSystem extends System {
             else {
                 unit = payload.unitType;
             }
+            console.info("HM", payload)
             this.createSquad(payload.xPosition, payload.yPosition, payload.count, payload.faction, unit);
         });
     }
@@ -99,6 +101,10 @@ export default class UnitGenerationSystem extends System {
     }
 
     initialize() {
+        if (this.noSpawn) {
+            return;
+        }
+
         this.createSquad(300, 300, 12, 'player', 'tank');
 
         this.createSquad(1500, 1500, 10, 'enemy', 'tank');

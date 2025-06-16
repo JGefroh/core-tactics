@@ -141,9 +141,11 @@ export class TitleScene extends BaseScene {
         })
         this.lastEntityId = lastId;
         setTimeout(() => {
-            entities.forEach((entity) => {
-                core.removeEntity(entity);
-            })
+            if (!this.cancelTimer) {
+                entities.forEach((entity) => {
+                    core.removeEntity(entity);
+                })
+            }
         }, 20000)
     }
 
@@ -156,6 +158,7 @@ export class TitleScene extends BaseScene {
     }
 
     unload(core) {
+        this.cancelTimer = true;
         core.clear();
     }
 }

@@ -1,6 +1,11 @@
 import FxBase from "../fx-base";
 
 export default class FxFireCannon extends FxBase {
+
+    static getFxKey() {
+        return 'FxFireCannon';
+    }
+    
     execute(core, params = {}) {
         core.send('PLAY_AUDIO', {
             audioKey: 'cannon-attack.mp3',

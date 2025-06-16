@@ -1,6 +1,11 @@
 import FxBase from "../fx-base";
 
 export default class FxHitCannon extends FxBase {
+
+    static getFxKey() {
+        return 'FxHitCannon';
+    }
+    
     execute(core, params = {}) {
         core.send('EMIT_PARTICLES', {
             xPosition: params.xPosition,

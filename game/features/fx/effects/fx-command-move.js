@@ -1,6 +1,11 @@
 import FxBase from "../fx-base";
 
 export default class FxCommandMove extends FxBase {
+    
+    static getFxKey() {
+        return 'FxCommandMove';
+    }
+    
     execute(core, params = {}) {
         core.send('EMIT_PARTICLES', {
             xPosition: params.xPosition,

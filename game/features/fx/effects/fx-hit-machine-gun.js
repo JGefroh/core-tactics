@@ -1,6 +1,11 @@
 import FxBase from "../fx-base";
 
 export default class FxHitMachineGun extends FxBase {
+
+    static getFxKey() {
+        return 'FxHitMachineGune';
+    }
+    
     execute(core, params = {}) {
         let viewport = core.getData('VIEWPORT');
         core.send('PLAY_AUDIO', {

@@ -1,6 +1,5 @@
 class FxBase {
     static getFxKey() {
-        return this.name;
     }
 
     preExecute(core, params) {

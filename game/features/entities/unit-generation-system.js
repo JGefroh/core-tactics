@@ -92,7 +92,6 @@ export default class UnitGenerationSystem extends System {
             else {
                 unit = payload.unitType;
             }
-            console.info("HM", payload)
             this.createSquad(payload.xPosition, payload.yPosition, payload.count, payload.faction, unit);
         });
     }

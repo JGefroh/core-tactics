@@ -13,7 +13,6 @@ export default class CommandAdjustSize extends BaseCommand {
     }
 
     onPerform(core, system, context) {
-        console.info("HM")
         core.publishData('EDITOR_SELECTED_SIZE', (core.getData('EDITOR_SELECTED_SIZE') || 32) + context.amount)
     }
 

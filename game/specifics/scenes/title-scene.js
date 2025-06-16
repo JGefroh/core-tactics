@@ -120,7 +120,7 @@ export class TitleScene extends BaseScene {
             this._reinforce(core)
         }, 100);
 
-        setInterval(() => {
+        this.interval = setInterval(() => {
             if (Math.random() < 0.3) {
                 this._reinforce(core);
             }
@@ -159,6 +159,7 @@ export class TitleScene extends BaseScene {
 
     unload(core) {
         this.cancelTimer = true;
+        clearInterval(this.interval);
         core.clear();
     }
 }

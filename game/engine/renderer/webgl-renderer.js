@@ -9,7 +9,7 @@ import Colors from '@game/engine/util/colors';
 
 export default class WebGLRenderer {
   constructor(renderCtx, materialRegistry) {
-    this.clearScreenColor = 'rgba(0, 0, 0, 1)';
+    this.clearScreenColor = 'rgba(0, 0, 0, 0.0)';
 
     this.materialRegistry = materialRegistry;
     this.renderCtx = renderCtx;

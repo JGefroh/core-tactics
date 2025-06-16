@@ -19,11 +19,24 @@ export default class RenderGuiSystem extends System {
   initialize() {
     this.send('REGISTER_RENDER_PASS', {
       name: 'GUI',
+      // destinationTarget: 'GUI',
       execute: (renderer, materialResolver) => {
-        this._submitGuiDraws(renderer, materialResolver);
-      }
+          this._submitGuiDraws(renderer, materialResolver);
+      },
+      // tickInterval: 3
     });
+
+    //   this.send('REGISTER_RENDER_PASS', {
+    //     name: 'GUI_BLIT',
+    //     sourceTargets: ['GUI'],
+    //     execute: (renderer, materialResolver) => {
+    //         renderer.submitRenderCommand({
+    //             materialId: 'blit',
+    //         });
+    //     },
+    // });
   }
+  
 
   _addUIHandlers() {
     this.addHandler('ADD_GUI_RENDERABLE', (payload) => {
@@ -61,6 +74,7 @@ export default class RenderGuiSystem extends System {
   }
 
   work() {
+    this.wait = 30;
     let canvasCtx = document.getElementById('ui-canvas').getContext("2d");
     canvasCtx.clearRect(0, 0, canvasCtx.canvas.width, canvasCtx.canvas.height);
 

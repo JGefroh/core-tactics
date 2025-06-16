@@ -21,9 +21,12 @@ export default class RenderSystem extends System {
 
     this.renderPasses = [];
 
-    this.renderPassSequence = ['WORLD', 'WORLD_OVERLAY_1', 'WORLD_OVERLAY_1_BLIT', 'PARTICLE', 'PARTICLE_BLIT', 'LIGHTING', 'LIGHTING_BLIT', 'ENVIRONMENT', 'ENVIRONMENT_BLIT', 'GUI']
+    this.renderPassSequence = ['WORLD', 'WORLD_OVERLAY_1', 'WORLD_OVERLAY_1_BLIT', 'PARTICLE', 'PARTICLE_BLIT', 'LIGHTING', 'LIGHTING_BLIT', 'ENVIRONMENT', 'ENVIRONMENT_BLIT','GUI',  'GUI_BLIT']
 
     this.addHandler('REGISTER_RENDER_PASS', (pass) => {
+      if (!pass.tickInterval) {
+        pass.tickInterval = 1;
+      }
       this.renderPasses.push(pass);
       this.renderPasses = this.renderPasses.sort((a, b) => this.renderPassSequence.indexOf(a.name) - this.renderPassSequence.indexOf(b.name));
     });
@@ -57,10 +60,17 @@ export default class RenderSystem extends System {
 
     this.renderer.beginFrame(this.renderCtx, viewport);
 
+    let redrawPriorFrame = false;
+
     for (let pass of this.renderPasses) {
-      this.renderer.beginPass(pass);
-      this.renderer.bindDestinationTarget(pass.destinationTarget);
-      pass.execute(this.renderer, this.materialResolver); 
+      let redrawPriorFrame = this._core.getTick() % pass.tickInterval != 0;
+
+      if (!redrawPriorFrame) {
+        this.renderer.beginPass(pass);
+        this.renderer.bindDestinationTarget(pass.destinationTarget);
+        pass.execute(this.renderer, this.materialResolver); 
+      }
+
       this.renderer.draw();
     }
 

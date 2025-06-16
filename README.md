@@ -1,6 +1,6 @@
 # Tactics
 
-Tactics is a 2d tactical "RTS" game that serves aas a tech demo for my [core-js](https://github.com/jgefroh/core-js) framework.
+Tactics is a 2d tactical "RTS" game that serves as a tech demo for my [core-js](https://github.com/jgefroh/core-js) framework.
 
 It is written in pure Javascript w/ Canvas and WebGL2 rendering and no other frameworks.
 

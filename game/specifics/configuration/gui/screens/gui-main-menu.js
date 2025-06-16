@@ -100,7 +100,7 @@ const guiConfiguration = {
             children: {
                 title: {
                     element: 'title',
-                    text: 'Empty',
+                    text: 'Tactics',
                 },
                 subtitle: {
                     element: 'subtitle',

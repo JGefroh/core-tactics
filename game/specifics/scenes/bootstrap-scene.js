@@ -35,7 +35,7 @@ export class BootstrapScene extends BaseScene {
     }
 
     setPageMetadata() {
-        document.title = "Empty by Joseph Gefroh";
+        document.title = "Tactics by Joseph Gefroh";
 
         let link = document.querySelector("link[rel*='icon']") || document.createElement('link');
         link.type = 'image/png';
@@ -58,11 +58,11 @@ export class BootstrapScene extends BaseScene {
             document.documentElement.style.backgroundColor = 'black';
             document.body.innerHTML = `
             <div style="color: white;font-family:sans-serif;padding:2rem;text-align:center;">
-              <h1>Empty by Joseph Gefroh</h1>
+              <h1>Tactics by Joseph Gefroh</h1>
               <h3>Unsupported Browser</h3>
-              <p>Care was designed to work in <b>Google Chrome</b>.</p>
+              <p>Tactics was designed to work in <b>Google Chrome</b>.</p>
               <p><a href="/?forceload" style="color: white;">Try playing anyways</p>
-              <p><a href="https://github.com/jgefroh/core-empty" style="color: white;">Github</a></p>
+              <p><a href="https://github.com/jgefroh/core-tactics" style="color: white;">Github</a></p>
             </div>
           `;
           return false;

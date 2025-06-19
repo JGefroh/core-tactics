@@ -8,7 +8,8 @@ export default class AudioPlayer {
         this.options = {
             masterVolume: 1,
             minDistance: window.innerWidth,
-            maxDistance: window.innerWidth + 100
+            maxDistance: window.innerWidth + 100,
+            usePositionalListener: false
         }
 
         this.configure(options)
@@ -23,6 +24,8 @@ export default class AudioPlayer {
         this.audioContext.listener.positionX.value = xPosition;
         this.audioContext.listener.positionY.value = yPosition;
         this.audioContext.listener.positionZ.value = 0;
+
+        this.configure({usePositionalListener: true})
     }
 
     async play(audioKey, options = {}) {
@@ -58,7 +61,7 @@ export default class AudioPlayer {
 
         // Add node chains
         let nodeChain = source.connect(gainNode);
-        if (options.sourceXPosition && options.sourceYPosition) {
+        if (this.options.usePositionalListener && options.sourceXPosition && options.sourceYPosition) {
             nodeChain = nodeChain.connect(this.createPanner(options.sourceXPosition, options.sourceYPosition))
         }
         nodeChain = nodeChain.connect(this.audioContext.destination);

@@ -28,6 +28,7 @@ export default class GuiConfigurationSystem extends System {
         this.send('REGISTER_GUI_ACTION', GuiGoToSite)
         
         this.send('REGISTER_GUI', {key: 'main-menu', definition: guiMainMenu})
+        this.send('REGISTER_GUI', {key: 'settings', definition: guiSettings})
         this.send('REGISTER_GUI', {key: 'how-to-play', definition: guiHowToPlay})
         this.send('REGISTER_GUI', {key: 'main-game', definition: guiMainGame})
         // this.send('REGISTER_GUI', {key: 'example-layout', definition: layoutGuiConfiguration})

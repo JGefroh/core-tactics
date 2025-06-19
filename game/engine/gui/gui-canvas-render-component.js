@@ -5,10 +5,16 @@ export default class GuiCanvasRenderComponent extends Component {
         super()
         this.componentType = 'GuiCanvasRenderComponent';
 
+        // Element
+        this.elementKey = payload.elementKey;
+
+        // Layout
+        this.autolayout = payload.autolayout // Allow the gui autolayout to manipulate this component's position
+        this.layourParentGuiKey = payload.layourParentGuiKey // A reference to the parent GUI element instance this belongs to
+
         //Render
         this.postRender = payload.postRender;
-        // Render Positioning - what point is the coordinate describing? top-left means it's the top left corner
-        this.renderAlignment = payload.renderAlignment || 'top-left' // default is x,y represent top-left
+        this.renderAlignment = payload.renderAlignment || 'top-left' // default is x,y represent top-left what point is the coordinate describing? top-left means it's the top left corner
 
         // Position
         this.canvasXPosition = payload.canvasXPosition || 0; // The position that describes the center on canvas

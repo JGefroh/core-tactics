@@ -89,7 +89,26 @@ const guiConfiguration = {
                 command: 'PRINT',
                 params: { type: 'CHANGE' }
             }
-        }
+        },
+        'large_menu_panel': {
+            position: {
+                strategy: 'canvas', 
+                offsetX: 400,
+                offsetY: 200
+            },
+            appearance: {
+                fillColor: 'rgba(255,0,0,1)',
+            },
+            size: {
+                strategy: null, 
+                width: 800,
+                height: 500
+            },
+            layout: {
+                strategy: 'vertical',   // vertical, horizontal, 'next-vertical', 'next-horizontal'
+                marginY: 10
+            },
+        },
     },
     "instances": {
         panel: {
@@ -105,38 +124,30 @@ const guiConfiguration = {
                 menu_panel: {
                     element: 'menu_panel',
                     children: {
-                        new_game_button: {
+                        category: {
                             element: 'menu_button',
-                            text: 'Start Game',
+                            text: 'Audio',
                             onClick: {
                                 command: 'START_GAME',
                                 params: { }
                             }
                         },
-                        settings: {
-                            element: 'menu_button',
-                            text: 'Settings',
-                            onClick: {
-                                command: 'LOAD_GUI',
-                                params: { gui: 'settings' }
-                            },
-                        },
-                        source_button2: {
-                            element: 'menu_button',
-                            appearance: {
-                                fillColor: 'rgba(0,0,0,0)'
-                            }
-                        },
-                        source_button: {
-                            element: 'menu_button',
-                            text: 'View Source Code',
-                            onClick: {
-                                command: 'GO_TO_SITE',
-                                params: { href: 'https://github.com/jgefroh', newWindow: true }
-                            },
-                        }
                     }
                 }
+            }
+        },
+        large_menu_panel: {
+            element: 'large_menu_panel',
+
+            children: {
+                category: {
+                    element: 'menu_button',
+                    text: 'Master volume',
+                    onClick: {
+                        command: 'START_GAME',
+                        params: { }
+                    }
+                },
             }
         }
     }

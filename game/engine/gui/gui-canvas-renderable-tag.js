@@ -11,6 +11,23 @@ export default class GuiCanvasRenderable extends Tag {
     };
 
     ////////
+    // Layout
+    ////////
+
+    getElementKey() {
+      return this.entity.getComponent('GuiCanvasRenderComponent').elementKey;
+    }
+
+    getAutoLayout() {
+      return this.entity.getComponent('GuiCanvasRenderComponent').autolayout;
+    }
+
+    getLayoutParentGuiKey() {
+      return this.entity.getComponent('GuiCanvasRenderComponent').layoutParentGuiKey;
+    }
+
+
+    ////////
     // Position
     ////////
 

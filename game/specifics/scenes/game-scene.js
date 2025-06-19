@@ -79,6 +79,7 @@ import AiConfigurationSystem from '../configuration/ai-configuration-system';
 import FxConfigurationSystem from '../configuration/fx-configuration-system';
 import GuiInteractionSystem from '../../engine/gui/gui-interaction-system';
 import ViewportAudioListenerSystem from '../../features/viewport-audio-listener/viewport-audio-listener-system';
+import GuiRegistrySystem from '../../engine/gui/gui-registry-system';
 
 export class GameScene extends BaseScene {
     load(core) {
@@ -111,8 +112,9 @@ export class GameScene extends BaseScene {
         core.addTag(Material);
 
         // 3. GUI
+        core.addSystem(new GuiRegistrySystem());
         core.addSystem(new RenderGuiSystem())
-        core.addTag(GuiCanvasRenderable)
+            core.addTag(GuiCanvasRenderable)
         core.addSystem(new GuiInteractionSystem());
         core.addSystem(new GuiLoaderSystem());
 

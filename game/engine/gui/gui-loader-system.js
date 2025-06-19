@@ -36,6 +36,9 @@ export default class GuiLoaderSystem extends System {
         this._loadGuiDefinition(this.guis[payload])
       })
 
+      this.addHandler('LOAD_GUI_ELEMENT', (payload) => {
+      });
+
       this.send('REGISTER_GUI_ACTION', GuiPrint);
       this.send('REGISTER_GUI_ACTION', GuiSend);
     }

@@ -116,7 +116,7 @@ const guiConfiguration = {
                                 params: { event: 'LOAD_SCENE', sceneKey: 'game' }
                             }
                         },
-                        settings: {
+                        how_to_play: {
                             element: 'menu_button',
                             text: 'How to Play',
                             onClick: {
@@ -124,6 +124,14 @@ const guiConfiguration = {
                                 params: { gui: 'how-to-play' }
                             },
                         },
+                        // settings: {
+                        //     element: 'menu_button',
+                        //     text: 'Settings',
+                        //     onClick: {
+                        //         command: 'LOAD_GUI',
+                        //         params: { gui: 'settings' }
+                        //     },
+                        // },
                         source_button2: {
                             element: 'menu_button',
                             appearance: {

@@ -108,6 +108,7 @@ export class TitleScene extends BaseScene {
         core.start();
 
         core.send('LOAD_GUI', 'main-menu')
+        // core.send('LOAD_GUI', 'settings')
 
 
         // Reinforce a portal and make them move off screen

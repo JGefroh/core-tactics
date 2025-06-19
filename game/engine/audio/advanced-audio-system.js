@@ -39,18 +39,22 @@ export default class AdvancedAudioSystem extends System {
           sourceXPosition, // Optional If you set this and decibels, you can use audio falloff.
           sourceYPosition, // Optional
           volume = 1, // an absolute value for volume
-          decibels, // Optional The "power" of the sound, used only for audio falloff. If there's no souce or listener, use volume
-          startAt = 0, // start playback at a specific second
-          exclusive, // whether it should be the ONLY version playing.
+          decibels, // Optional The "power" of the sound, 
+          cooldownMs = 0, // optional - amount of time before another variant of this audio key or exclusiveGroup can be played.
+          loop = false, // whether to loop
           exclusiveGroup, // exlusivity is segmented via all shared audio playbacks in the same group - useful for variants
-          loop, // whether to loop
-          endAt, // end playback at a specific second
+          endsAtMs, // end playback at a specific ms
+          startsAtMs = 0, // start playback at a specific ms
         } = payload;
 
         this.audioPlayer.play(`/assets/audio/${audioKey}`, {
           sourceXPosition: sourceXPosition,
           sourceYPosition: sourceYPosition,
-          volume: decibels >= 0 ? (decibels/130) : volume 
+          volume: decibels >= 0 ? (decibels/130) : volume ,
+          cooldownMs: cooldownMs,
+          exclusiveGroup: exclusiveGroup,
+          startsAtMs: startsAtMs,
+          endsAtMs: endsAtMs
         });
     }
 

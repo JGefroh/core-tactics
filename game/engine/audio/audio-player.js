@@ -2,6 +2,8 @@ export default class AudioPlayer {
     constructor(options) {
         this.buffers = new Map();
         this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        this.lastPlayedByKey = {};
+        this.playingSoundsByKey = {};
 
         this.options = {
             masterVolume: 1,
@@ -24,23 +26,44 @@ export default class AudioPlayer {
     }
 
     async play(audioKey, options = {}) {
-        const buffer = await this._loadBuffer(audioKey);
-        const source = this.audioContext.createBufferSource();
-        const gainNode = this.audioContext.createGain();
+        if (options.cooldownMs) {
+            // If sound was recently played and has a cooldown
+            let lastPlayed = this.lastPlayedByKey[options.exclusiveGroup || audioKey];
+            if (lastPlayed && Date.now() < lastPlayed + options.cooldownMs) {
+                return;
+            }
+        }
 
-        source.buffer = buffer;
-        // source.loop = loop;
+        if (options.exclusive || options.exclusiveGroup) {
+            // If sound is currently playing but is meant to be exclusive
+            if (this.playingSoundsByKey[options.exclusiveGroup || audioKey]) {
+                return;
+            }
+        }
+
+        this.lastPlayedByKey[options.exclusiveGroup || audioKey] = Date.now()
+        this.playingSoundsByKey[options.exclusiveGroup || audioKey] = true;
+        const buffer = await this._loadBuffer(audioKey);
+        const gainNode = this.audioContext.createGain();
         gainNode.gain.value = (options.volume / 1) * this.options.masterVolume;
 
-        let nodeChain = source.connect(gainNode);
+        const source = this.audioContext.createBufferSource();
+        source.buffer = buffer;
+        source.loop = options.loop;
 
+        // Lifecycle events
+        source.onended = () => {
+            delete this.playingSoundsByKey[options.exclusiveGroup || audioKey];
+        };
+
+        // Add node chains
+        let nodeChain = source.connect(gainNode);
         if (options.sourceXPosition && options.sourceYPosition) {
             nodeChain = nodeChain.connect(this.createPanner(options.sourceXPosition, options.sourceYPosition))
         }
-
         nodeChain = nodeChain.connect(this.audioContext.destination);
         
-        source.start(0);
+        source.start(0, options.startsAtMs ? options.startsAtMs / 1000 : 0, options.endsAtMs ? options.endsAtMs / 1000 : undefined);
     }
 
     createPanner(sourceXPosition, sourceYPosition) {

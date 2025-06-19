@@ -12,8 +12,10 @@ export default class FxHitLaserSword extends FxBase {
             audioKey: 'laser-attack.mp3',
             decibels: 120,
             sourceXPosition: params.xPosition,
-            sourceYPosition: params.yPosition
-,        });
+            sourceYPosition: params.yPosition,
+            cooldownMs: 100,
+            
+        });
         core.send('EMIT_PARTICLES', {
             xPosition: params.xPosition,
             yPosition: params.yPosition,

@@ -11,7 +11,8 @@ export default class FxFireCannon extends FxBase {
             audioKey: 'cannon-attack.mp3',
             decibels: 120,
             sourceXPosition: params.xPosition,
-            sourceYPosition: params.yPosition
+            sourceYPosition: params.yPosition,
+            cooldownMs: 100
 ,        });
 
         core.send('EMIT_PARTICLES', {

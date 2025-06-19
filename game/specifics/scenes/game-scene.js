@@ -79,6 +79,7 @@ import AiConfigurationSystem from '../configuration/ai-configuration-system';
 import FxConfigurationSystem from '../configuration/fx-configuration-system';
 import GuiInteractionSystem from '../../engine/gui/gui-interaction-system';
 import ViewportAudioListenerSystem from '../../features/viewport-audio-listener/viewport-audio-listener-system';
+import AdvancedAudioSystem from '../../engine/audio/advanced-audio-system';
 
 export class GameScene extends BaseScene {
     load(core) {
@@ -124,7 +125,8 @@ export class GameScene extends BaseScene {
         core.addSystem(new InputSystem())
 
         // 6. Audio
-        core.addSystem(new AudioSystem());
+        // core.addSystem(new AudioSystem());
+        core.addSystem(new AdvancedAudioSystem());
         core.addTag(AudioListener);
 
 

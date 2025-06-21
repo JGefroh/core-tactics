@@ -25,15 +25,9 @@ export class ActionSelectTarget extends ActionBase {
         }
 
         if (currentState.entity.hasLabel('UnitType:slicer')) {
-            let snipers = targets.far.filter((entity) => {
-                return entity.hasLabel('UnitType:sniper')
-            });
-
-            if (snipers.length) {
-                currentState.targetEntity = this._randomFrom(snipers);
-                if (currentState.targetEntity) {
-                    return;
-                }
+            currentState.targetEntity = this.selectFrom(targets.near, 'UnitType:sniper') || this.selectFrom(targets.far, 'UnitType:sniper') || this.selectFrom(targets.near) || this.selectFrom(targets.far);
+            if (currentState.targetEntity) {
+                return;
             }
         }
         
@@ -41,7 +35,21 @@ export class ActionSelectTarget extends ActionBase {
         if (!currentState.targetEntity) {
             currentState.targetEntity = this._randomFrom(targets.far.slice(0, 3));
         }
+    }
 
+    selectFrom(collection, label) {
+        if (!collection?.length) {
+            return;
+        }
+        let prospects = collection.filter((entity) => {
+            return !label || entity.hasLabel(label)
+        });
+
+        if (!prospects.length) {
+            return null;
+        }
+
+        return this._randomFrom(prospects);
     }
 
 

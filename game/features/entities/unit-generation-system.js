@@ -41,7 +41,7 @@ export default class UnitGenerationSystem extends System {
                     "cooldownMs": 6000,
                     "fxOnHit": "FxHitSniper"
                 },
-                "speed": 2
+                "speed": 0.5
             },
             "gunner": {
                 "shape": {

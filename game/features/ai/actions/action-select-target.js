@@ -23,10 +23,25 @@ export class ActionSelectTarget extends ActionBase {
         if (!targets) {
             return;
         }
+
+        if (currentState.entity.hasLabel('UnitType:slicer')) {
+            let snipers = targets.far.filter((entity) => {
+                return entity.hasLabel('UnitType:sniper')
+            });
+
+            if (snipers.length) {
+                currentState.targetEntity = this._randomFrom(snipers);
+                if (currentState.targetEntity) {
+                    return;
+                }
+            }
+        }
+        
         currentState.targetEntity = this._randomFrom(targets.close)
         if (!currentState.targetEntity) {
             currentState.targetEntity = this._randomFrom(targets.far.slice(0, 3));
         }
+
     }
 
 

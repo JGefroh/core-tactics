@@ -38,7 +38,7 @@ export default class UnitGenerationSystem extends System {
                     "damage": 1500,
                     "energy": 30,
                     "range": 1500,
-                    "cooldownMs": 10000,
+                    "cooldownMs": 6000,
                     "fxOnHit": "FxHitSniper"
                 },
                 "speed": 2
@@ -160,6 +160,7 @@ export default class UnitGenerationSystem extends System {
         let entity = new Entity();
         entity.addLabel('CanCapture')
         entity.addLabel('IsUnit')
+        entity.addLabel(`UnitType:${unitType}`)
         let position = new PositionComponent({
             xPosition: x,
             yPosition: y,

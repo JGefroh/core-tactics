@@ -133,6 +133,7 @@ export default class RenderGuiSystem extends System {
 
       if (renderable.getLayer() == 'world') {
         if (!renderable.getAttachedExists()) {
+          canvasCtx.restore();
           return;
         }
         let viewport = this._core.getData('VIEWPORT');

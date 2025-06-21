@@ -30,6 +30,13 @@ export class ActionSelectTarget extends ActionBase {
                 return;
             }
         }
+
+        if (currentState.entity.hasLabel('UnitType:gunner')) {
+            currentState.targetEntity = this.selectFrom(targets.near, 'UnitType:slicer') || this.selectFrom(targets.near) || this.selectFrom(targets.far);
+            if (currentState.targetEntity) {
+                return;
+            }
+        }
         
         currentState.targetEntity = this._randomFrom(targets.close)
         if (!currentState.targetEntity) {

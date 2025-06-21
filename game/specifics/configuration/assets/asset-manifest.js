@@ -22,7 +22,9 @@ const manifest = {
     audio: {
         'UNIT_MOVE_1': { group: 'UNIT_MOVE', path: 'unit-move-1.mp3' },
         'UNIT_MOVE_2': { group: 'UNIT_MOVE', path: 'unit-move-2.mp3' },
-        'UNIT_MOVE_3': { group: 'UNIT_MOVE', path: 'unit-move-3.mp3' }
+        'UNIT_MOVE_3': { group: 'UNIT_MOVE', path: 'unit-move-3.mp3' },
+        'LASER_ATTACK_1': { group: 'LASER_ATTACK', path: 'laser-attack-1.mp3' },
+        'LASER_ATTACK_2': { group: 'LASER_ATTACK', path: 'laser-attack-2.mp3' }
     }
 }
 export default manifest;

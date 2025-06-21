@@ -9,8 +9,8 @@ export default class FxHitLaserSword extends FxBase {
     execute(core, params = {}) {
         let viewport = core.getData('VIEWPORT');
         core.send('PLAY_AUDIO', {
-            audioKey: 'laser-attack.mp3',
-            decibels: 120,
+            groupKey: 'LASER_ATTACK',
+            decibels: 40,
             sourceXPosition: params.xPosition,
             sourceYPosition: params.yPosition,
             cooldownMs: 100,

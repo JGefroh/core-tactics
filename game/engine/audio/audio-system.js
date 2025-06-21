@@ -70,6 +70,7 @@ export default class AudioSystem extends System {
         }
 
         this.audioPlayer.play(path, {
+          group: groupKey,
           sourceXPosition: sourceXPosition,
           sourceYPosition: sourceYPosition,
           volume: decibels >= 0 ? (decibels/130) : volume ,

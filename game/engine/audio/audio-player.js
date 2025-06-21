@@ -31,7 +31,7 @@ export default class AudioPlayer {
     async play(audioKey, options = {}) {
         if (options.cooldownMs) {
             // If sound was recently played and has a cooldown
-            let lastPlayed = this.lastPlayedByKey[options.exclusiveGroup || audioKey];
+            let lastPlayed = this.lastPlayedByKey[options.exclusiveGroup || options.group || audioKey];
             if (lastPlayed && Date.now() < lastPlayed + options.cooldownMs) {
                 return;
             }
@@ -44,7 +44,7 @@ export default class AudioPlayer {
             }
         }
 
-        this.lastPlayedByKey[options.exclusiveGroup || audioKey] = Date.now()
+        this.lastPlayedByKey[options.exclusiveGroup || options.group || audioKey] = Date.now()
         this.playingSoundsByKey[options.exclusiveGroup || audioKey] = true;
         const buffer = await this._loadBuffer(audioKey);
         const gainNode = this.audioContext.createGain();

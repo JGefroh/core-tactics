@@ -23,6 +23,9 @@ const manifest = {
         'UNIT_MOVE_1': { group: 'UNIT_MOVE', path: 'unit-move-1.mp3' },
         'UNIT_MOVE_2': { group: 'UNIT_MOVE', path: 'unit-move-2.mp3' },
         'UNIT_MOVE_3': { group: 'UNIT_MOVE', path: 'unit-move-3.mp3' },
+        'UNIT_ATTACK_1': { group: 'UNIT_ATTACK', path: 'unit-attack-1.mp3' },
+        'UNIT_ATTACK_2': { group: 'UNIT_ATTACK', path: 'unit-attack-2.mp3' },
+        'UNIT_ATTACK_3': { group: 'UNIT_ATTACK', path: 'unit-attack-3.mp3' },
         'LASER_ATTACK_1': { group: 'LASER_ATTACK', path: 'laser-attack-1.mp3' },
         'LASER_ATTACK_2': { group: 'LASER_ATTACK', path: 'laser-attack-2.mp3' }
     }

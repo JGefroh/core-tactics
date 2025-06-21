@@ -7,6 +7,14 @@ export default class FxCommandAttack extends FxBase {
     }
     
     execute(core, params = {}) {
+
+        core.send('PLAY_AUDIO', {
+            groupKey: 'UNIT_ATTACK',
+            decibels: 30,
+            cooldownMs: 300,
+            exclusiveGroup: 'UNIT_ATTACK'
+        });
+
         core.send('EMIT_PARTICLES', {
             xPosition: params.xPosition,
             yPosition: params.yPosition,

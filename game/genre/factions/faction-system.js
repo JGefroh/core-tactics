@@ -7,9 +7,9 @@ export default class FactionSystem extends System {
         super()
 
         FactionComponent.setFactionColors({
-            'ally': 'rgba(0,0,255, 1)',
-            'enemy': 'rgba(255,0 ,0, 1)',
-            'player': 'rgba(0,255,0, 1)',
+            'ally': 'rgb(0, 76, 255)',
+            'enemy': 'rgb(187, 45, 45)',
+            'player': 'rgb(49, 222, 49)',
             'neutral': 'rgba(255,255,255, 1)'
         })
 

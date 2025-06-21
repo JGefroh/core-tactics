@@ -2,6 +2,7 @@ import { default as System } from '@core/system';
 import { default as Entity } from '@core/entity.js'
 
 import { uiSettings } from '../ui-settings';
+import FactionComponent from '../../../genre/factions/faction-component';
 
 export default class UiObjectivesSystem extends System {
     constructor() {
@@ -12,6 +13,7 @@ export default class UiObjectivesSystem extends System {
 
   initialize() {
     this.addLabel()
+    
     this.addReinforcements(window.innerWidth / 2 - 100, 30, 'ally')
     this.addReinforcements(window.innerWidth / 2 + 100, 30, 'enemy')
   }
@@ -48,7 +50,7 @@ export default class UiObjectivesSystem extends System {
         height: 32,
         canvasXPosition: x,
         canvasYPosition: y,
-        fillStyle: uiSettings.backgroundColor,
+        fillStyle: FactionComponent.getFactionColor(faction),
         strokeStyle: uiSettings.borderColor,
         fontSize: 18,
         text: faction.toUpperCase(),

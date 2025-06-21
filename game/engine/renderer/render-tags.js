@@ -132,5 +132,18 @@ export default class Renderable extends Tag {
     getPathPoints() {
       return this.entity.getComponent('RenderComponent').pathPoints;
     }
+
+    
+
+    ////////
+    // Borders
+    ////////
+    getBorderSize() {
+      return this.entity.getComponent('RenderComponent').borderSize;
+    }
+
+    getBorderColor() {
+      return this.entity.getComponent('RenderComponent').borderColor;
+    }
 }
   

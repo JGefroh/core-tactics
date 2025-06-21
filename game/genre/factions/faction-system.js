@@ -6,6 +6,13 @@ export default class FactionSystem extends System {
     constructor() {
         super()
 
+        FactionComponent.setFactionColors({
+            'ally': 'rgba(0,0,255, 1)',
+            'enemy': 'rgba(255,0 ,0, 1)',
+            'player': 'rgba(0,255,0, 1)',
+            'neutral': 'rgba(255,255,255, 1)'
+        })
+
         this.factions = {
             'enemy': {
                 enemies: ['player', 'ally']

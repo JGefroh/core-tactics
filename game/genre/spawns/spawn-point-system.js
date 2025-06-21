@@ -9,8 +9,6 @@ import RenderComponent from '@game/engine/renderer/render-component';
 export default class SpawnPointSystem extends System {
     constructor(params = {}) {
         super()
-
-        this.noSpawn = params.noSpawn;
     }
 
     initialize() {
@@ -26,15 +24,6 @@ export default class SpawnPointSystem extends System {
                 this.requestSpawnEntity(payload.entity)
             }
         })
-
-        if (this.noSpawn) {
-            return;
-        }
-        
-        this.addSpawnPoint(300, 300, 'ally', 'rgba(0,0,255,0.8)');
-        this.addSpawnPoint(300, 2700, 'ally', 'rgba(0,0,255,0.8)');
-        this.addSpawnPoint(2700, 2700, 'enemy', 'rgba(255,0,0,0.5)');
-        this.addSpawnPoint(2700, 300, 'enemy', 'rgba(255,0,0,0.5)');
     }
 
     addSpawnPoint(x, y, faction, color) {

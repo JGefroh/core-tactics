@@ -36,6 +36,8 @@ export default class RenderRenderablesSystem extends System {
           imageType: renderable.getImageType()
         },
         color: renderable.getShapeColor(),
+        borderSize: renderable.getBorderSize(),
+        borderColor: renderable.getBorderColor(),
         options: {}, // Use later
       }
       const materialId = materialResolver.resolve(drawCommand, {key: entity.key});

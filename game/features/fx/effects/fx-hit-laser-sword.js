@@ -13,7 +13,7 @@ export default class FxHitLaserSword extends FxBase {
             decibels: 40,
             sourceXPosition: params.xPosition,
             sourceYPosition: params.yPosition,
-            cooldownMs: 100,
+            cooldownMs: 500,
             
         });
         core.send('EMIT_PARTICLES', {

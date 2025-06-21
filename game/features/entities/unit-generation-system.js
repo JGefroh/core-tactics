@@ -106,7 +106,7 @@ export default class UnitGenerationSystem extends System {
 
         this.createSquad(300, 300, 12, 'player', 'tank');
 
-        this.createSquad(1500, 1500, 10, 'enemy', 'tank');
+        this.createSquad(1100, 1100, 10, 'enemy', 'tank');
         this.createSquad(1600, 1600, 7, 'enemy', 'slicer');
         this.createSquad(2000, 2000, 6, 'ally', 'slicer');
         this.createSquad(2000, 2000, 7, 'ally', 'tank');
@@ -134,23 +134,13 @@ export default class UnitGenerationSystem extends System {
     }
 
     createUnit(x, y, faction, unitType, group) {
-        let color = null;
-        if (faction == 'ally') {
-            color =  'rgba(0,0,255, 1)'
-        }
-        else if (faction == 'player') {
-            color =  'rgba(0,255,0, 1)'
-        }
-        else if (faction == 'enemy') {
-            color = 'rgba(255,0 ,0, 1)'
-        }
-        else {
-            color = 'rgba(255,255,255, 1)'
-        }
+        let color = FactionComponent.getFactionColor(faction)
 
         let unit = this.units[unitType]
 
         let entity = new Entity();
+        entity.addLabel('CanCapture')
+        entity.addLabel('IsUnit')
         let position = new PositionComponent({
             xPosition: x,
             yPosition: y,

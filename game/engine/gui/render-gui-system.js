@@ -197,7 +197,7 @@ export default class RenderGuiSystem extends System {
     }
     canvasCtx.font = `${renderable.getFontSize() || 14}px ${renderable.getFontType() || 'sans-serif'}`;
     canvasCtx.textBaseline = 'top';
-    canvasCtx.textAlign = 'left' || renderable.getTextAlign();
+    canvasCtx.textAlign = renderable.getTextAlign() || 'left';
 
     if (`${renderable.getText()}`.split(' ').length <= 2) {
       // It's unlikely that a couple words will require a split.

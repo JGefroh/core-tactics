@@ -12,7 +12,7 @@ export default class FxFireCannon extends FxBase {
             decibels: 120,
             sourceXPosition: params.xPosition,
             sourceYPosition: params.yPosition,
-            cooldownMs: 100
+            cooldownMs: 500
 ,        });
 
         core.send('EMIT_PARTICLES', {

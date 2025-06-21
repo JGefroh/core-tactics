@@ -80,6 +80,11 @@ import FxConfigurationSystem from '../configuration/fx-configuration-system';
 import GuiInteractionSystem from '../../engine/gui/gui-interaction-system';
 import ViewportAudioListenerSystem from '../../features/viewport-audio-listener/viewport-audio-listener-system';
 import GuiRegistrySystem from '../../engine/gui/gui-registry-system';
+import CapturePointSystem from '../../genre/capture/capture-point-system';
+import CapturePoint from '../../genre/capture/capture-point-tag';
+import CanCapture from '../../genre/capture/can-capture-tag';
+import UiObjectivesSystem from '../../features/ui/ui-objectives/ui-objectives-system';
+import GameOverSystem from '../../features/game-over/game-over-system';
 
 export class GameScene extends BaseScene {
     load(core) {
@@ -88,8 +93,17 @@ export class GameScene extends BaseScene {
 
         core.send('SET_VIEWPORT_BOUNDS', {minXPosition: 0, minYPosition: 0, maxXPosition: 3000, maxYPosition: 3000})
         core.send('SET_VIEWPORT', {xPosition: 0, yPosition: 0})
+
+        this.initializeLevelEntities(core);
     }
 
+    initializeLevelEntities(core) {
+        core.send('ADD_CAPTURE_POINT', {xPosition: 1450, yPosition: 1450});
+        core.send('ADD_SPAWN_POINT', {xPosition: 300, yPosition: 300, faction: 'ally', color: 'rgba(0,0,255,0.8)'});
+        core.send('ADD_SPAWN_POINT', {xPosition: 300, yPosition: 2700, faction: 'ally', color: 'rgba(0,0,255,0.8)'});
+        core.send('ADD_SPAWN_POINT', {xPosition: 2700, yPosition: 2700, faction: 'enemy', color: 'rgba(255,0,0,0.5)'});
+        core.send('ADD_SPAWN_POINT', {xPosition: 2700, yPosition: 300, faction: 'enemy', color: 'rgba(255,0,0,0.5)'});
+    }
     unload(core) {
     }
 
@@ -207,13 +221,14 @@ export class GameScene extends BaseScene {
 
         // 2. World Space UI
         core.addSystem(new GuiAttachmentSystem());
-        core.addTag(HasGuiAttachment);
+            core.addTag(HasGuiAttachment);
 
         // 3. UI Elements
         core.addSystem(new MinimapSystem());
             core.addTag(Minimap);
         core.addSystem(new CommandPaletteSystem());
         core.addSystem(new UiReinforcementsSystem());
+        core.addSystem(new UiObjectivesSystem());
 
 
         ///
@@ -222,6 +237,10 @@ export class GameScene extends BaseScene {
         core.addSystem(new ReinforcementsSystem());
         core.addSystem(new SpawnPointSystem());
             core.addTag(SpawnPoint);
+        core.addSystem(new CapturePointSystem());
+            core.addTag(CapturePoint);
+            core.addTag(CanCapture)
+        core.addSystem(new GameOverSystem());
 
 
         ///

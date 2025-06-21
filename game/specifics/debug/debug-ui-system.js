@@ -8,7 +8,7 @@ export default class DebugUiSystem extends System {
               this.send('ADD_GUI_RENDERABLE', {
                   key: `debug-coordinates-viewport`,
                   canvasXPosition: 450,
-                  canvasYPosition: 34,
+                  canvasYPosition: window.innerHeight - 50,
                   text: 'v####x####',
                   fontSize: 10
               });
@@ -16,7 +16,7 @@ export default class DebugUiSystem extends System {
               this.send('ADD_GUI_RENDERABLE', {
                   key: `debug-coordinates-cursor`,
                   canvasXPosition: 450,
-                  canvasYPosition: 22,
+                  canvasYPosition: window.innerHeight - 30,
                   text: 'm####x####',
                   fontSize: 10
               });

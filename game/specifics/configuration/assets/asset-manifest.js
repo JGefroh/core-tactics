@@ -18,7 +18,11 @@ const manifest = {
         'TERRAIN_ROCKS': { path: 'terrain-rocks.jpg'}
     },
     props: {
-      
+    },
+    audio: {
+        'UNIT_MOVE_1': { group: 'UNIT_MOVE', path: 'unit-move-1.mp3' },
+        'UNIT_MOVE_2': { group: 'UNIT_MOVE', path: 'unit-move-2.mp3' },
+        'UNIT_MOVE_3': { group: 'UNIT_MOVE', path: 'unit-move-3.mp3' }
     }
 }
 export default manifest;

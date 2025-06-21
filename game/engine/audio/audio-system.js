@@ -11,6 +11,17 @@ export default class AudioSystem extends System {
       this.audioCache = {}
       this.audioPlayer = new AudioPlayer();
 
+      this.audioFiles = {};
+      this.audioFilesByGroup = {};
+
+      this.addHandler('LOAD_AUDIO', (payload) => {
+        this.audioFiles[payload.key] = payload;
+        if (payload.group) {
+          this.audioFilesByGroup[payload.group] ||= [];
+          this.audioFilesByGroup[payload.group].push(payload);
+        }
+      })
+
       this.addHandler('PLAY_AUDIO', (payload) => {
         this._playAudio(payload);
       });
@@ -38,6 +49,7 @@ export default class AudioSystem extends System {
     async _playAudio(payload) {
         const {
           audioKey,
+          groupKey, // optional, use groupKey to select a random audio from a group
           sourceXPosition, // Optional If you set this and decibels, you can use audio falloff.
           sourceYPosition, // Optional
           volume = 1, // an absolute value for volume
@@ -49,7 +61,15 @@ export default class AudioSystem extends System {
           startsAtMs = 0, // start playback at a specific ms
         } = payload;
 
-        this.audioPlayer.play(`/assets/audio/${audioKey}`, {
+        let path = `/assets/audio/${audioKey}`;
+        if (this.audioFiles[audioKey]) {
+          path = `/assets/audio/${this.audioFiles[audioKey].path}`;
+        }
+        else if (groupKey) {
+          path =  `/assets/audio/${this._randomFrom(this.audioFilesByGroup[groupKey]).path}`;;
+        }
+
+        this.audioPlayer.play(path, {
           sourceXPosition: sourceXPosition,
           sourceYPosition: sourceYPosition,
           volume: decibels >= 0 ? (decibels/130) : volume ,
@@ -68,6 +88,10 @@ export default class AudioSystem extends System {
       });
 
       return position;
+    }
+
+    _randomFrom(array) {
+        return array[Math.floor(Math.random() * array.length)];
     }
   }
   

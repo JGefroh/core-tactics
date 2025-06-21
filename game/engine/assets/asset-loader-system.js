@@ -21,6 +21,7 @@ export default class AssetLoaderSystem extends System {
       
       this.loadTextures(combinedTextures);
       this.loadProps(assetManifest.props);
+      this.loadAudio(assetManifest.audio);
     }
 
     _removeJsonDefinitions(props) {
@@ -51,6 +52,13 @@ export default class AssetLoaderSystem extends System {
           let propDefinition = {type: key, imageKey: key}
           this.send('DEFINE_PROP', propDefinition)
         }
+      }
+    }
+
+    loadAudio(sounds) {
+      for (const [key, value] of Object.entries(sounds)) {
+        let audio = { key: key, path: value.path, group: value.group}
+        this.send('LOAD_AUDIO', audio)
       }
     }
 }

@@ -7,6 +7,16 @@ export default class FxCommandMove extends FxBase {
     }
     
     execute(core, params = {}) {
+
+        core.send('PLAY_AUDIO', {
+            groupKey: 'UNIT_MOVE',
+            decibels: 80,
+            sourceXPosition: params.xPosition,
+            sourceYPosition: params.yPosition,
+            cooldownMs: 300,
+            exclusiveGroup: 'UNIT_MOVE'
+        });
+
         core.send('EMIT_PARTICLES', {
             xPosition: params.xPosition,
             yPosition: params.yPosition,

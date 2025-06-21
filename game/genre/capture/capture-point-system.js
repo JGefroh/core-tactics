@@ -14,7 +14,7 @@ export default class CapturePointSystem extends System {
 
     initialize() {
         this.addHandler('ADD_CAPTURE_POINT', (payload) => {
-            this.addCapturePoint(payload.xPosition, payload.yPosition)
+            // this.addCapturePoint(payload.xPosition, payload.yPosition)
         })
     }
 
@@ -73,7 +73,6 @@ export default class CapturePointSystem extends System {
                 tag.getEntity().getComponent('RenderComponent').shapeColor = FactionComponent.getFactionColor(factionCapturing);
             }
             tag.getEntity().getComponent('RenderComponent').borderColor = FactionComponent.getFactionColor(factionCapturing);
-
         });
     }
 

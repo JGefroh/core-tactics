@@ -136,7 +136,7 @@ const guiConfiguration = {
                         },
                         instructions: {
                             element: 'instructions',
-                            text: "Unit Selection & Movement\n.....Left-click a unit to select it.\n.....Right-click a location or enemy to move or attack.\n.....Select multiple units by clicking and dragging around them.\n.....Incrementally select or unselect units by holding Shift.\n\nControl Groups\n.....Press 1-12 to select a control group.\n.....Press Ctrl+1-12 to assign selected units to a control group.\n\nCommands\n.....Press S to make selected units defend their current area.\n\nFormations\n.....Hold Shift and press Q, W, E, or R to apply a formation preset.",
+                            text: "Objective - defeat all enemies.\n\nUnit Selection & Movement\n.....Left-click a unit to select it.\n.....Right-click a location or enemy to move or attack.\n.....Select multiple units by clicking and dragging around them.\n.....Incrementally select or unselect units by holding Shift.\n\nControl Groups\n.....Press 1-12 to select a control group.\n.....Press Ctrl+1-12 to assign selected units to a control group.\n\nCommands\n.....Press S to make selected units defend their current area.\n\nFormations\n.....Hold Shift and press Q, W, E, or R to apply a formation preset.",
                             position: {
                                 width: 700
                             }

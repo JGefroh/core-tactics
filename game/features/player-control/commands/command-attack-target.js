@@ -8,6 +8,10 @@ export default class CommandAttackTarget extends BaseCommand {
     onPerform(core, system, context) {
         let units = context.currentSelectedEntities;
 
+        if (context.entity.getComponent('FactionComponent')?.faction == 'ally') {
+          return;
+        }
+
         units.forEach((unitEntity) => {
           core.send('SET_AI', {
             entity: unitEntity,

@@ -10,9 +10,7 @@ export default class FxCommandMove extends FxBase {
 
         core.send('PLAY_AUDIO', {
             groupKey: 'UNIT_MOVE',
-            decibels: 80,
-            sourceXPosition: params.xPosition,
-            sourceYPosition: params.yPosition,
+            decibels: 30,
             cooldownMs: 300,
             exclusiveGroup: 'UNIT_MOVE'
         });
@@ -24,18 +22,19 @@ export default class FxCommandMove extends FxBase {
             particleEmissionCyclesMax: 1,
             particleShape: 'rectangle',
             particleCount: 1,
-            particleLifetimeMin: 200,
-            particleLifetimeMax: 200,
+            particleLifetimeMin: 400,
+            particleLifetimeMax: 400,
             particleHeightMin: 20, 
             particleHeightMax: 20,
-            particleWidthMin: 5,
-            particleWidthMax: 5,
-            particleColors: [`rgba(0, 0, 255, 1)`],
+            particleWidthMin: 2,
+            particleWidthMax: 2,
+            particleColors: [`rgba(0, 255, 0, 0.8)`],
             particleSpeedMin: 0,
             particleSpeedMax: 0,
             particleEmissionAngleDegreesMin: 0,
             particleEmissionAngleDegreesMax: 0,
             particleSpawnRadius: 0,
+            fxRotateDegrees: -5
         });
         core.send('EMIT_PARTICLES', {
             xPosition: params.xPosition,
@@ -44,18 +43,19 @@ export default class FxCommandMove extends FxBase {
             particleEmissionCyclesMax: 1,
             particleShape: 'rectangle',
             particleCount: 1,
-            particleLifetimeMin: 200,
-            particleLifetimeMax: 200,
-            particleHeightMin: 5, 
-            particleHeightMax: 5,
+            particleLifetimeMin: 400,
+            particleLifetimeMax: 400,
+            particleHeightMin: 2, 
+            particleHeightMax: 2,
             particleWidthMin: 20,
             particleWidthMax: 20,
-            particleColors: [`rgba(0, 0, 255, 1)`],
+            particleColors: [`rgba(0, 255, 0, 0.8)`],
             particleSpeedMin: 0,
             particleSpeedMax: 0,
             particleEmissionAngleDegreesMin: 0,
             particleEmissionAngleDegreesMax: 0,
             particleSpawnRadius: 0,
+            fxRotateDegrees: -5
         });
     }
     

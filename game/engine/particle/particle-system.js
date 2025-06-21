@@ -65,6 +65,7 @@ export default class ParticleSystem extends System {
             particleEmissionAngleDegreesMin,
             particleEmissionAngleDegreesMax,
             particleSpawnRadius = 0,
+            fxRotateDegrees
         } = emitter;
 
         for (let i = 0; i < particleCount; i++) {
@@ -99,6 +100,7 @@ export default class ParticleSystem extends System {
                 color,
                 age: 0,
                 lifetime,
+                fxRotateDegrees
             });
         }
     }
@@ -129,8 +131,14 @@ export default class ParticleSystem extends System {
                 return false;
             }
 
+            // Position
             p.xPosition += p.vx * (deltaMs / 1000);
             p.yPosition += p.vy * (deltaMs / 1000);
+
+            // FX Rotation
+            if (p.fxRotateDegrees) {
+                p.angleDegrees += p.fxRotateDegrees; 
+            }
             return true;
         });
 

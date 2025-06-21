@@ -24,25 +24,44 @@ export default class UnitGenerationSystem extends System {
         this.noSpawn = params.noSpawn;
 
         this.units = {
-            // "gunner": {
-            //     "shape": {
-            //         "width": 50,
-            //         "height": 50,
-            //         "shape": "circle",
-            //         "image": "UNIT_GUNNER"
-            //     },
-            //     "health": 4000,
-            //     "energy": 3000,
-            //     "weapon": {
-            //         "weaponKey": "machine_gun",
-            //         "damage": 300,
-            //         "energy": 30,
-            //         "range": 500,
-            //         "cooldownMs": 1000,
-            //         "fxOnHit": "FxHitMachineGun"
-            //     },
-            //     "speed": 2
-            // },
+            "sniper": {
+                "shape": {
+                    "width": 60,
+                    "height": 60,
+                    "shape": "circle",
+                    "image": "UNIT_SNIPER"
+                },
+                "health": 2000,
+                "energy": 3000,
+                "weapon": {
+                    "weaponKey": "sniper",
+                    "damage": 1500,
+                    "energy": 30,
+                    "range": 1500,
+                    "cooldownMs": 10000,
+                    "fxOnHit": "FxHitSniper"
+                },
+                "speed": 2
+            },
+            "gunner": {
+                "shape": {
+                    "width": 50,
+                    "height": 50,
+                    "shape": "circle",
+                    "image": "UNIT_GUNNER"
+                },
+                "health": 4000,
+                "energy": 3000,
+                "weapon": {
+                    "weaponKey": "machine_gun",
+                    "damage": 300,
+                    "energy": 30,
+                    "range": 500,
+                    "cooldownMs": 1000,
+                    "fxOnHit": "FxHitMachineGun"
+                },
+                "speed": 2
+            },
             "tank": {
                 "shape": {
                     "width": 75,

@@ -8,8 +8,8 @@ export default class FxHitCannon extends FxBase {
     
     execute(core, params = {}) {
         core.send('EMIT_PARTICLES', {
-            xPosition: params.xPosition,
-            yPosition: params.yPosition,
+            xPosition: params.targetPosition.xPosition,
+            yPosition: params.targetPosition.yPosition,
             particleEmitFrequencyInMs: 50,
             particleEmissionCyclesMax: 2,
             particleShape: 'circle',

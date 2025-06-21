@@ -4,6 +4,7 @@ const manifest = {
         'UNIT_TANK': { path: 'unit-tank.png' },
         'UNIT_GUNNER': { path: 'unit-gunner.png' },
         'UNIT_SLICER': { path: 'unit-slicer.png' },
+        'UNIT_SNIPER': { path: 'unit-sniper.png' },
         'SPAWN_POINT': { path: 'spawn-point.png'},
         'ICON_GRID': { path: 'icon-grid.png'},
         'ICON_HLINE': { path: 'icon-hline.png'},
@@ -27,7 +28,8 @@ const manifest = {
         'UNIT_ATTACK_2': { group: 'UNIT_ATTACK', path: 'unit-attack-2.mp3' },
         'UNIT_ATTACK_3': { group: 'UNIT_ATTACK', path: 'unit-attack-3.mp3' },
         'LASER_ATTACK_1': { group: 'LASER_ATTACK', path: 'laser-attack-1.mp3' },
-        'LASER_ATTACK_2': { group: 'LASER_ATTACK', path: 'laser-attack-2.mp3' }
+        'LASER_ATTACK_2': { group: 'LASER_ATTACK', path: 'laser-attack-2.mp3' },
+        'SNIPER_ATTACK_1': { group: 'SNIPER_ATTACK', path: 'sniper-attack-1.mp3' }
     }
 }
 export default manifest;

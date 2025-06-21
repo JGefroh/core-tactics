@@ -7,18 +7,17 @@ export default class FxHitLaserSword extends FxBase {
     }
 
     execute(core, params = {}) {
-        let viewport = core.getData('VIEWPORT');
         core.send('PLAY_AUDIO', {
             groupKey: 'LASER_ATTACK',
             decibels: 40,
-            sourceXPosition: params.xPosition,
-            sourceYPosition: params.yPosition,
+            sourceXPosition: params.targetPosition.xPosition,
+            sourceYPosition: params.targetPosition.yPosition,
             cooldownMs: 500,
             
         });
         core.send('EMIT_PARTICLES', {
-            xPosition: params.xPosition,
-            yPosition: params.yPosition,
+            xPosition: params.targetPosition.xPosition,
+            yPosition: params.targetPosition.yPosition,
             particleEmitFrequencyInMs: 100,
             particleEmissionCyclesMax: 1,
             particleShape: 'rectangle',

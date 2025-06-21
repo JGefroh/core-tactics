@@ -3,20 +3,21 @@ import FxBase from "../fx-base";
 export default class FxHitMachineGun extends FxBase {
 
     static getFxKey() {
-        return 'FxHitMachineGune';
+        return 'FxHitMachineGun';
     }
     
     execute(core, params = {}) {
         let viewport = core.getData('VIEWPORT');
         core.send('PLAY_AUDIO', {
             audioKey: 'machine-gun-attack.mp3',
-            decibels: 120,
-            sourceXPosition: params.xPosition,
-            sourceYPosition: params.yPosition
+            decibels: 40,
+            sourceXPosition: params.targetPosition.xPosition,
+            sourceYPosition: params.targetPosition.yPosition,
+            cooldownMs: 500
 ,        });
         core.send('EMIT_PARTICLES', {
-            xPosition: params.xPosition,
-            yPosition: params.yPosition,
+            xPosition: params.targetPosition.xPosition,
+            yPosition: params.targetPosition.yPosition,
             particleEmitFrequencyInMs: 50,
             particleEmissionCyclesMax: 4,
             particleShape: 'circle',

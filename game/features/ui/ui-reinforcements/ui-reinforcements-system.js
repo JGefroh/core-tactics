@@ -16,8 +16,9 @@ export default class UiReinforcementsSystem extends System {
   initialize() {
     this.addLabel(1, 'Reinforce - Select a squad')
     this.addButton(2, 'Squad Heavy | 8x Tanks', 8, 'tank')
-    // this.addButton(3, 'Squad Medium | 10x Gunners', 10, 'gunner')
+    this.addButton(3, 'Squad Medium | 10x Gunners', 10, 'gunner')
     this.addButton(4, 'Squad Light | 12x Slicers', 12, 'slicer')
+    this.addButton(5, 'Squad Support | 5x Sniper', 5, 'sniper')
 
     this.addHandler('SHOW_REINFORCEMENTS_SCREEN', () => {
       this.send("GUI_UPDATE_VISIBLE", {

@@ -72,6 +72,19 @@ export default class Weapon extends Tag{
       this.entity.getComponent('WeaponComponent').targetEntity = targetEntity;
     }
 
+    getSourcePosition() {
+      let source = this.entity;
+      let sourcePosition = source.getComponent('PositionComponent');
+      if (!sourcePosition) {
+        return null;
+      }
+
+      return {
+        xPosition: sourcePosition.xPosition,
+        yPosition: sourcePosition.yPosition
+      }
+    }
+
     getTargetEntity() {
       return this.entity.getComponent('WeaponComponent').targetEntity;
     }

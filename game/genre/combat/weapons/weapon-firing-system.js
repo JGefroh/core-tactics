@@ -62,6 +62,7 @@ export default class WeaponFiringSystem extends System {
         this.send('EXECUTE_FX', {
           fxKey: tag.getWeaponStats().fxOnHit,
           params: {
+            firingEntity: tag.getOwningEntity(),
             sourcePosition: tag.getSourcePosition(),
             targetPosition: tag.getTargetPosition()
           },

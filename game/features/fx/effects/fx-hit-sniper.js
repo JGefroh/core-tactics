@@ -1,4 +1,5 @@
 import FxBase from "../fx-base";
+import FactionComponent from "../../../genre/factions/faction-component";
 
 export default class FxHitSnipe extends FxBase {
 
@@ -26,6 +27,8 @@ export default class FxHitSnipe extends FxBase {
         const midX = (sourcePosition.xPosition + targetPosition.xPosition) / 2;
         const midY = (sourcePosition.yPosition + targetPosition.yPosition) / 2;
 
+        let color = FactionComponent.getFactionColor(params.firingEntity.getComponent('FactionComponent').faction);
+
         core.send('EMIT_PARTICLES', {
             xPosition: midX,
             yPosition: midY,
@@ -39,7 +42,7 @@ export default class FxHitSnipe extends FxBase {
             particleHeightMax: 4,
             particleWidthMin: distance,
             particleWidthMax: distance,
-            particleColors: [`rgba(255, 174, 66, 1)`],
+            particleColors: [color || `rgba(255, 174, 66, 1)`],
             particleSpeedMin: 0,
             particleSpeedMax: 0,
             particleEmissionAngleDegreesMin: angleDegrees,

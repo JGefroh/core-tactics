@@ -58,7 +58,8 @@ export default class UnitGenerationSystem extends System {
                     "energy": 30,
                     "range": 500,
                     "cooldownMs": 1000,
-                    "fxOnHit": "FxHitMachineGun"
+                    "fxOnHit": "FxHitMachineGun",
+                    "fxOnFire": "FxFireMachineGun"
                 },
                 "speed": 2
             },
@@ -97,7 +98,7 @@ export default class UnitGenerationSystem extends System {
                     "range": 180,
                     "energy": 5,
                     "cooldownMs": 300,
-                    'fxOnHit': 'FxHitLaserSword'
+                    'fxOnHit': 'FxHitLaserSword',
                 },
                 "speed": 4
             }

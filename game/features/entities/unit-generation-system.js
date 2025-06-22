@@ -186,7 +186,17 @@ export default class UnitGenerationSystem extends System {
         })
 
         let health = new HealthComponent({
-            health: unit.health
+            health: unit.health,
+            onHealthZero: () => {
+                this._core.send('EXECUTE_FX', {
+                    fxKey: 'FxDeath',
+                    params: {
+                        xPosition: position.xPosition,
+                        yPosition: position.yPosition,
+                    }
+                })
+                return 'default'
+            }
         })
 
         let minimap = new MinimapComponent({

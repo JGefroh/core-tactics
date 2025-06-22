@@ -7,8 +7,8 @@ export default class ReinforcementsSystem extends System {
         this.wait = 1000;
 
         this.reinforcementsByFaction = {
-            'enemy': 500,
-            'ally': 500
+            'enemy': 300,
+            'ally': 300
         };
     }
 

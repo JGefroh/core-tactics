@@ -9,6 +9,7 @@ import FxHitSniper from '../../features/fx/effects/fx-hit-sniper';
 import FxCommandAttack from '../../features/fx/effects/fx-command-attack';
 import FxCommandMove from '../../features/fx/effects/fx-command-move';
 import FxFireCannon from '../../features/fx/effects/fx-fire-cannon';
+import FxDeath from '../../features/fx/effects/fx-death';
 
 export default class FxConfigurationSystem extends System {
     constructor() {
@@ -21,5 +22,6 @@ export default class FxConfigurationSystem extends System {
         this.send('REGISTER_FX', FxHitSniper);
         this.send('REGISTER_FX', FxCommandAttack);
         this.send('REGISTER_FX', FxCommandMove);
+        this.send('REGISTER_FX', FxDeath)
     }
   }

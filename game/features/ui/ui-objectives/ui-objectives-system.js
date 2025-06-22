@@ -74,7 +74,7 @@ export default class UiObjectivesSystem extends System {
      this.send('GUI_UPDATE_PROPERTIES', {
       key: `reinforcements-${faction}`,
       value: {
-        text: `${amount}`
+        text: `${Math.max(amount, 0)}`
       }
     });
   }

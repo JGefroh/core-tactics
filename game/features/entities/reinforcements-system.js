@@ -7,8 +7,8 @@ export default class ReinforcementsSystem extends System {
         this.wait = 1000;
 
         this.reinforcementsByFaction = {
-            'enemy': 300,
-            'ally': 300
+            'enemy': 200,
+            'ally': 200
         };
     }
 
@@ -25,8 +25,8 @@ export default class ReinforcementsSystem extends System {
         });
 
         Object.keys(countsByFaction).forEach((faction) => {
-            if (faction != 'player' && countsByFaction[faction] < 20 && this.reinforcementsByFaction[faction] > 0) {
-                this.reinforceFaction(faction, 3)
+            if (faction != 'player' && countsByFaction[faction] < 30 && this.reinforcementsByFaction[faction] > 0) {
+                this.reinforceFaction(faction, 5)
             }
         })
 
@@ -46,13 +46,13 @@ export default class ReinforcementsSystem extends System {
     }
 
     reinforceFaction(faction, count) {
-        let unitCount = Math.max(6, Math.floor(Math.random() * 12));
+        let unitCount = Math.min(Math.max(6, 6 + Math.floor(Math.random() * 6)), 12);
 
         for (let i = 0; i < Math.random() * count; i++) {
             this.workForTag('SpawnPoint', (spawn) => {
                 if (spawn.getFaction() == faction) {
                     this.send('CREATE_SQUAD', {
-                        count: count,
+                        count: unitCount,
                         faction: faction,
                         unitType: 'random'
                     })

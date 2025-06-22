@@ -18,13 +18,16 @@ export default class UiReinforcementsSystem extends System {
     this.addButton(2, 'Squad Heavy | 8x Tanks', 8, 'tank')
     this.addButton(3, 'Squad Medium | 10x Gunners', 10, 'gunner')
     this.addButton(4, 'Squad Light | 12x Slicers', 12, 'slicer')
-    this.addButton(5, 'Squad Support | 5x Sniper', 5, 'sniper')
+    this.addButton(5, 'Squad Support | 6x Sniper', 5, 'sniper')
 
     this.addHandler('SHOW_REINFORCEMENTS_SCREEN', () => {
-      this.send("GUI_UPDATE_VISIBLE", {
-        relatedKeyPrefix: 'ui-reinforcement-select',
-        isVisible: true
-      });
+      let reinforcements = this._core.getData('REINFORCEMENTS')
+      if (reinforcements && reinforcements['ally'] > 0) {
+        this.send("GUI_UPDATE_VISIBLE", {
+          relatedKeyPrefix: 'ui-reinforcement-select',
+          isVisible: true
+        });
+      }
     })
   }
 
@@ -63,6 +66,9 @@ export default class UiReinforcementsSystem extends System {
             fontColor: 'rgba(0,0,0,1)',
         },
         onClick: (core) => {
+
+                let reinforcements = this._core.getData('REINFORCEMENTS');
+                reinforcements['ally'] -= count;
                 this.send('CREATE_SQUAD', {
                     count: count,
                     faction: 'player',
@@ -76,6 +82,7 @@ export default class UiReinforcementsSystem extends System {
                 // Intentional double - side effect! Call once to select unit, call twice to center camera.
                 this.send('INPUT_RECEIVED', {action: 'command_select_all'})
                 this.send('INPUT_RECEIVED', {action: 'command_select_all'})
+
         },
         isActive: (core) => {
             // return core.getData('CURRENT_FORMATION') == value;

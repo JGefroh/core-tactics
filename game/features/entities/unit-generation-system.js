@@ -31,14 +31,14 @@ export default class UnitGenerationSystem extends System {
                     "shape": "circle",
                     "image": "UNIT_SNIPER"
                 },
-                "health": 2000,
+                "health": 1000,
                 "energy": 3000,
                 "weapon": {
                     "weaponKey": "sniper",
                     "damage": 1500,
                     "energy": 30,
                     "range": 1500,
-                    "cooldownMs": 6000,
+                    "cooldownMs": 8000,
                     "fxOnHit": "FxHitSniper"
                 },
                 "speed": 0.5
@@ -146,16 +146,20 @@ export default class UnitGenerationSystem extends System {
 
 
         if (this.units['debug']) {
-            this.createSquad(300, 300, 12, 'player', 'debug');
+            this.createSquad(500, 100, 12, 'player', 'debug');
         }
         else {
-            this.createSquad(300, 300, 12, 'player', 'tank');
+            // this.createSquad(500, 100, 12, 'player', 'tank');
         }
 
-        this.createSquad(1100, 1100, 10, 'enemy', 'tank');
-        this.createSquad(1600, 1600, 7, 'enemy', 'slicer');
-        this.createSquad(2000, 2000, 6, 'ally', 'slicer');
-        this.createSquad(2000, 2000, 7, 'ally', 'tank');
+        // this.createSquad(0, 500, 12, 'ally', 'slicer');
+        // this.createSquad(0, 2500, 12, 'ally', 'tank');
+
+        // this.createSquad(2500, 500, 12, 'enemy', 'tank');
+        // this.createSquad(2500, 100, 7, 'enemy', 'slicer');
+        // this.createSquad(2500, 2500, 12, 'enemy', 'tank');
+        // this.createSquad(2500, 2500, 12, 'enemy', 'gunner');
+
     }
 
     createSquad(x, y, count, faction, unitType) {

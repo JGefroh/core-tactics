@@ -143,7 +143,7 @@ const guiConfiguration = {
                             text: 'View Source Code',
                             onClick: {
                                 command: 'GO_TO_SITE',
-                                params: { href: 'https://github.com/jgefroh', newWindow: true }
+                                params: { href: 'https://github.com/jgefroh/core-tactics', newWindow: true }
                             },
                         }
                     }

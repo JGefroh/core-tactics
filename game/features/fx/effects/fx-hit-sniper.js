@@ -49,6 +49,28 @@ export default class FxHitSnipe extends FxBase {
             particleEmissionAngleDegreesMax: angleDegrees,
             particleSpawnRadius: 0,
         });
+
+        core.send('EMIT_PARTICLES', {
+            xPosition: params.targetPosition.xPosition,
+            yPosition: params.targetPosition.yPosition,
+            particleEmitFrequencyInMs: 50,
+            particleEmissionCyclesMax: 1,
+            particleShape: 'circle',
+            particleCount: 1,
+            particleLifetimeMin: 300,
+            particleLifetimeMax: 300,
+            particleHeightMin: 16, //0.08 is pretty much the smallest
+            particleHeightMax: 16,
+            particleWidthMin: 16,
+            particleWidthMax: 16,
+            particleColors: [color || `rgba(255, 174, 66, 1)`],
+            particleSpeedMin: 0,
+            particleSpeedMax: 0,
+            particleEmissionAngleDegreesMin: 0,
+            particleEmissionAngleDegreesMax: 360,
+            particleSpawnRadius: 0,
+            fxSizeChangeRate: 0.0005
+        });
     }
     
     undo(core, params = {}) {

@@ -63,6 +63,18 @@ export class BootstrapScene extends BaseScene {
               <p>Tactics was designed to work in <b>Google Chrome</b>.</p>
               <p><a href="/?forceload" style="color: white;">Try playing anyways</p>
               <p><a href="https://github.com/jgefroh/core-tactics" style="color: white;">Github</a></p>
+
+                <hr>
+                <h2>Media</h2>
+                <hr>
+                <img src="/screenshots/action.gif" width="100%"/>
+                <hr>
+                <img src="/screenshots/screenshot-title.jpg" width="100%"/>
+                <hr>
+                <img src="/screenshots/screenshot-1.jpg" width="100%"/>
+                <hr>
+                <img src="/screenshots/screenshot-2.jpg" width="100%"/>
+                </div>
             </div>
           `;
           return false;

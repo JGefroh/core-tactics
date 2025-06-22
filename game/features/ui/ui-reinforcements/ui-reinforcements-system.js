@@ -72,6 +72,10 @@ export default class UiReinforcementsSystem extends System {
                 this.send("GUI_UPDATE_VISIBLE", {
                   relatedKeyPrefix: 'ui-reinforcement-select'
                 });
+
+                // Intentional double - side effect! Call once to select unit, call twice to center camera.
+                this.send('INPUT_RECEIVED', {action: 'command_select_all'})
+                this.send('INPUT_RECEIVED', {action: 'command_select_all'})
         },
         isActive: (core) => {
             // return core.getData('CURRENT_FORMATION') == value;

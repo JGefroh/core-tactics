@@ -7,6 +7,14 @@ export default class FxDeath extends FxBase {
     }
     
     execute(core, params = {}) {
+        core.send('PLAY_AUDIO', {
+            audioKey: 'unit-death.mp3',
+            decibels: 100,
+            sourceXPosition: params.xPosition,
+            sourceYPosition: params.yPosition,
+            cooldownMs: 500
+,        });
+
         core.send('EMIT_PARTICLES', {
             xPosition: params.xPosition,
             yPosition: params.yPosition,

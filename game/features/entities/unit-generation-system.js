@@ -103,6 +103,27 @@ export default class UnitGenerationSystem extends System {
             }
         }
 
+        if (window.location.href.indexOf('debugunit') != -1) {
+            this.units['debug'] = {
+                "shape": {
+                    "width": 100,
+                    "height": 100,
+                    "shape": "circle",
+                },
+                "health": 2000000,
+                "energy": 3000000,
+                "weapon": {
+                    "weaponKey": "sniper",
+                    "damage": 1000500,
+                    "energy": 30,
+                    "range": 150000,
+                    "cooldownMs": 50,
+                    "fxOnHit": "FxHitSniper"
+                },
+                "speed": 0.5
+            }
+        }
+
         this.addHandler('CREATE_SQUAD', (payload) => {
             let unit = null;
             if (!payload.unitType || payload.unitType == 'random') {
@@ -123,7 +144,13 @@ export default class UnitGenerationSystem extends System {
             return;
         }
 
-        this.createSquad(300, 300, 12, 'player', 'tank');
+
+        if (this.units['debug']) {
+            this.createSquad(300, 300, 12, 'player', 'debug');
+        }
+        else {
+            this.createSquad(300, 300, 12, 'player', 'tank');
+        }
 
         this.createSquad(1100, 1100, 10, 'enemy', 'tank');
         this.createSquad(1600, 1600, 7, 'enemy', 'slicer');

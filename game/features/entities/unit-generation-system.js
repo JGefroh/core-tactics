@@ -94,7 +94,7 @@ export default class UnitGenerationSystem extends System {
                 "weapon": {
                     "weaponKey": "laser_sword",
                     "damage": 600,
-                    "range": 72,
+                    "range": 180,
                     "energy": 5,
                     "cooldownMs": 300,
                     'fxOnHit': 'FxHitLaserSword'
@@ -132,6 +132,7 @@ export default class UnitGenerationSystem extends System {
             else {
                 unit = payload.unitType;
             }
+
             this.createSquad(payload.xPosition, payload.yPosition, payload.count, payload.faction, unit);
         });
     }

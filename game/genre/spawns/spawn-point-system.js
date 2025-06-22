@@ -102,7 +102,9 @@ export default class SpawnPointSystem extends System {
         spawnX = spawn.getXPosition();
         spawnY = spawn.getYPosition();
 
-        if (spawnX === null || spawnY === null) return;
+        if (spawnX === null || spawnY === null) {
+            return;
+        }
 
         const spacing = Math.max(proposed.width, proposed.height);
 
@@ -110,7 +112,7 @@ export default class SpawnPointSystem extends System {
     }
 
     _scanSpawnPosition(entity, positionComponent, proposed, baseX, baseY, spacing) {
-        const maxAttempts = 100;
+        const maxAttempts = 1000;
         let attempts = 0;
         let found = false;
 
@@ -126,6 +128,7 @@ export default class SpawnPointSystem extends System {
             this._trySpawnPosition(entity, positionComponent, proposed, px, py, tryNext, () => {
                 found = true;
             });
+
         };
 
         tryNext();

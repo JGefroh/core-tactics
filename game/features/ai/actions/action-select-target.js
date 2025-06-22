@@ -56,7 +56,7 @@ export class ActionSelectTarget extends ActionBase {
             return null;
         }
 
-        return this._randomFrom(prospects);
+        return this._randomFrom(prospects.slice(0, 3));
     }
 
 

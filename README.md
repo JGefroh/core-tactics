@@ -8,6 +8,7 @@ It's fully playable at http://tactics.jgefroh.com.
 
 This is not intended to be used in a commercial or production environment - it was just a fun hobby project I wrote.
 
+![output](https://github.com/user-attachments/assets/bf428686-16a6-4844-9108-abfcd3040422)
 
 ![Screenshot 2025-06-15 at 7 19 40 PM](https://github.com/user-attachments/assets/8fca09d8-9fc2-4b6c-a180-913fb5807359)
 
